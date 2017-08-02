@@ -1,0 +1,8 @@
+# -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
+
+def build(bld):
+    obj = bld.create_ns3_program('epidemic-example', ['epidemic', 'wifi', 'mesh', 'applications'])
+    obj.source = 'epidemic-example.cc'
+    obj = bld.create_ns3_program('epidemic-benchmark', ['epidemic', 'wifi', 'mesh', 'applications'])
+    obj.source = 'epidemic-benchmark.cc'
+
