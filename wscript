@@ -1,8 +1,7 @@
 ## -*- Mode: python; py-indent-offset: 4; indent-tabs-mode: nil; coding: utf-8; -*-
 
 def build(bld):
-    module = bld.create_ns3_module('epidemic', ['internet'])
-    module.includes = '.'
+    module = bld.create_ns3_module('epidemic-routing', ['internet'])
     module.source = [
         'model/epidemic-packet-queue.cc',
         'model/epidemic-packet.cc',
@@ -11,13 +10,13 @@ def build(bld):
         'helper/epidemic-helper.cc',
         ]
         
-    module_test = bld.create_ns3_module_test_library('epidemic')
+    module_test = bld.create_ns3_module_test_library('epidemic-routing')
     module_test.source = [
         'test/epidemic-test-suite.cc',
         ]
         
     headers = bld(features='ns3header')
-    headers.module = 'epidemic'
+    headers.module = 'epidemic-routing'
     headers.source = [
         'model/epidemic-packet-queue.h',
         'model/epidemic-packet.h',
@@ -27,7 +26,7 @@ def build(bld):
         ]
 
 
-    if bld.env['ENABLE_EXAMPLES']:
+    if bld.env.ENABLE_EXAMPLES:
         bld.recurse('examples')
 
-    bld.ns3_python_bindings()
+    #bld.ns3_python_bindings()
